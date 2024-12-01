@@ -8,7 +8,13 @@ const app = express();
 app.use(express.json());
 
 
-mongoose.connect('mongodb+srv://admin:Atlas.Password123@cluster0.6pxrd.mongodb.net/comp3123_assigment1?retryWrites=true&w=majority&appName=Cluster0',);
+mongoose.connect('mongodb://mongo:27017/comp3123_assignment2', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch((err) => console.error('MongoDB connection error:', err));
+
 
 // Routes
 app.use('/api/v1/user', userRoutes);
